@@ -13,7 +13,7 @@ namespace AspNetCoreExample
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .ConfigureServices(services => services.AddUnity())
+                .ConfigureServices(ServiceProvider.ConfigureServices)
                 .UseStartup<Startup>()
                 .Build();
     }
