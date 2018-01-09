@@ -1,0 +1,11 @@
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+
+before_build:
+- cmd: dotnet restore
+
+build:
+  project: examples.sln
+  parallel: true
+  verbosity: minimal
