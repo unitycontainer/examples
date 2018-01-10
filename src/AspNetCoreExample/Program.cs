@@ -8,7 +8,7 @@ namespace AspNetCoreExample
     public class Program
     {
         // Optional root container.
-        private static readonly IUnityContainer _container = new UnityContainer(); 
+        private static readonly IUnityContainer _container = new UnityContainer();
 
         public static void Main(string[] args)
         {
@@ -20,9 +20,8 @@ namespace AspNetCoreExample
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                   //.UseUnityServiceProvider()             // Could use either one of these
-                   .UseUnityServiceProvider(_container)     // Could use either one of these
-                   .UseStartup<Startup>()
-                   .Build();
+                .ConfigureServices(s => s.AddUnity()) 
+                .UseStartup<Startup>()
+                .Build();
     }
 }
