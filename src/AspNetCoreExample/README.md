@@ -1,4 +1,4 @@
-
+  
 # Unity.Microsoft.DependencyInjection
 Unity extension to integrate with [Microsoft.Extensions.DependencyInjection](https://github.com/aspnet/DependencyInjection)  compliant systems
 
@@ -14,9 +14,9 @@ Install-Package Unity.Microsoft.DependencyInjection
 ```C#
 public static IWebHost BuildWebHost(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
-        .UseUnityServiceProvider()
-        .UseStartup<Startup>()
-        .Build();
+           .UseUnityServiceProvider()
+           .UseStartup<Startup>()
+           .Build();
 ```
 - Add method to your `Startup` class
 ```C#
