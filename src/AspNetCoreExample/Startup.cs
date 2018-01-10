@@ -23,7 +23,7 @@ namespace AspNetCoreExample
             services.AddMvc();
         }
 
-        // This is called after original ConfigureServices 
+        //This is called after original ConfigureServices
         public void ConfigureContainer(IUnityContainer container)
         {
             container.RegisterType<IFooBarService, FooBarService>(new ContainerControlledLifetimeManager());
