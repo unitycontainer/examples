@@ -1,6 +1,6 @@
 
 # Unity.Microsoft.DependencyInjection
-Unity extension to integrate with [Microsoft.Extensions.DependencyInjection.Abstractions](https://github.com/aspnet/DependencyInjection)  compliant systems
+Unity extension to integrate with [Microsoft.Extensions.DependencyInjection](https://github.com/aspnet/DependencyInjection)  compliant systems
 
 ## Get Started
 - Reference the `Unity.Microsoft.DependencyInjection` package from NuGet.
