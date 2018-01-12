@@ -1,14 +1,14 @@
   
 # Unity.Microsoft.DependencyInjection
-Unity extension to integrate with [Microsoft.Extensions.DependencyInjection](https://github.com/aspnet/DependencyInjection)  compliant systems
+This example demonstrates how to use Unity Container with ASP.NET web application. In order to enable Unity as default dependency injection provider you need to follow two simple steps:
 
-## Get Started
+## Install package
 - Reference the `Unity.Microsoft.DependencyInjection` package from NuGet.
 ```
 Install-Package Unity.Microsoft.DependencyInjection
 ```
 
-## Registration:
+## Register Unity as default service provider
 - In the `WebHostBuilder` add `UseUnityServiceProvider(...)` method
 
 ```C#
