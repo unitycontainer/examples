@@ -14,7 +14,7 @@ Install-Package Unity.Microsoft.DependencyInjection
 ```C#
 public static IWebHost BuildWebHost(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
-           .UseUnityServiceProvider()
+           .UseUnityServiceProvider()    <------ Add this line
            .UseStartup<Startup>()
            .Build();
 ```
