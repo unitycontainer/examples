@@ -13,9 +13,9 @@ namespace BuildPlanCreatorExample
             typeof(FooBuildPlanCreatorPolicy).GetTypeInfo().GetDeclaredMethod(nameof(FactoryMethod));
 
         /// <summary>
-        /// 
+        /// Factory plan to build [I]Foo type
         /// </summary>
-        /// <param name="policies"></param>
+        /// <param name="policies">Container policy list to store created plans</param>
         public FooBuildPlanCreatorPolicy(IPolicyList policies)
         {
             _policies = policies;
@@ -28,12 +28,11 @@ namespace BuildPlanCreatorExample
             var factoryMethod =
                 _factoryMethod.MakeGenericMethod(typeToBuild)
                               .CreateDelegate(typeof(DynamicBuildPlanMethod));
-
             // Create policy
             var creatorPlan = new DynamicMethodBuildPlan((DynamicBuildPlanMethod)factoryMethod);
 
-            // Register this policy with container to optimize performance
-            _policies.Set(buildKey.Type, string.Empty, typeof(IBuildPlanCreatorPolicy), creatorPlan);
+            // Register BuildPlan policy with the container to optimize performance
+            _policies.Set(buildKey.Type, string.Empty, typeof(IBuildPlanPolicy), creatorPlan);
 
             return creatorPlan;
         }
