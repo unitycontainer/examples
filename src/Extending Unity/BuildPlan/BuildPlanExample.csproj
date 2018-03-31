@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <UnityAbstractions>..\..\..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
+    <UnityContainer>..\..\..\..\Container\src\Unity.Container.csproj</UnityContainer>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(UnityAbstractions)')">
+    <ProjectReference Include="$(UnityAbstractions)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
+    <PackageReference Include="Unity.Abstractions" Version="3.*" />
+  </ItemGroup>
+
+
+  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
+    <PackageReference Include="Unity.Abstractions" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(UnityContainer)')">
+    <PackageReference Include="Unity.Container" Version="$(UnityContainerVersion)" />
+  </ItemGroup>
+
+</Project>
