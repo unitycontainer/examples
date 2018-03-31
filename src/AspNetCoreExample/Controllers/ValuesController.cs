@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApplication1.Controllers
 {
@@ -9,7 +10,7 @@ namespace WebApplication1.Controllers
         private readonly IEnumerable<string> _values = new[] { "This string is displayed if something went wrong" };
 
         // Resolve all strings registered with container
-        public ValuesController(IEnumerable<string> values)
+        public ValuesController(ILogger<ValuesController> logger, IEnumerable<string> values)
         {
             _values = values;
         }
