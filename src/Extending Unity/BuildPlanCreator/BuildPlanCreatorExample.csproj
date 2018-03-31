@@ -6,7 +6,6 @@
     <OutputType>Exe</OutputType>
     <StartupObject />
   </PropertyGroup>
-
   
   <PropertyGroup>
     <UnityAbstractions>..\..\..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
@@ -22,12 +21,12 @@
   </ItemGroup>
 
 
-  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="5.*" />
+  <ItemGroup Condition="Exists('$(UnityContainer)')">
+    <ProjectReference Include="$(UnityContainer)" />
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(UnityContainer)')">
-    <PackageReference Include="Unity.Container" Version="$(UnityContainerVersion)" />
+    <PackageReference Include="Unity.Container" Version="5.*" />
   </ItemGroup>
 
 </Project>
