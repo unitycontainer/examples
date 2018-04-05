@@ -13,6 +13,7 @@ namespace BuildPlanExample
             // applies to ALL resolutions of the type regardless of requested name.
             // In other words it creates 'Built-In' registration similar to Lazy or IEnumerable.
             Context.Policies.Set(typeof(IFoo<>), string.Empty, typeof(IBuildPlanPolicy), new FooBuildPlanPolicy());
+            Context.Policies.Set(typeof(Foo<>), string.Empty, typeof(IBuildPlanPolicy), new FooBuildPlanPolicy()); // Optional
         }
     }
 }
