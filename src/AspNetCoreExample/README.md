@@ -14,11 +14,16 @@ Install-Package Unity.Microsoft.DependencyInjection
 ```C#
 public static IWebHost BuildWebHost(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
-           .UseUnityServiceProvider()    <------ Add this line
+           .UseUnityServiceProvider(...)    <------ Add this line, you could pass IUnityContainer instrance
            .UseStartup<Startup>()
            .Build();
 ```
-- Add method to your `Startup` class
+
+### Startup
+
+Class `Startup` is now resolved from Unity container so if you registered any types it would be available during construction.
+
+- If you want you could add method to your `Startup` class
 ```C#
 public void ConfigureContainer(IUnityContainer container)
 {
