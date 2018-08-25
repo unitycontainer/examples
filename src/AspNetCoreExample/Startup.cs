@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Unity;
 
-namespace WebApplication1
+namespace Web.Core_2.App
 {
     public class Startup
     {
@@ -15,22 +16,18 @@ namespace WebApplication1
 
         public IConfiguration Configuration { get; }
 
-        // Configure Unity container
-        public void ConfigureContainer(IUnityContainer container)
-        {
-            container.RegisterInstance("This string is displayed if container configured correctly", 
-                                       "This string is displayed if container configured correctly");
-        }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Container could be configured via services as well. 
-            // Just be careful not to override registrations
-            services.AddSingleton("This string also displayed if container configured correctly");
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
-            // Add MVC as usual
-            services.AddMvc();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +37,13 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseMvc();
         }
