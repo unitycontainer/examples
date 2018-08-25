@@ -4,13 +4,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Unity;
 
 namespace Web.Core_2.App
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IUnityContainer _container;
+
+        public Startup(IConfiguration configuration, IUnityContainer container)
         {
+            _container = container; // Resolved from Unity Container
+
             Configuration = configuration;
         }
 
