@@ -1,36 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <UnityAbstractions>..\..\..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
-    <UnityContainer>..\..\..\..\Container\src\Unity.Container.csproj</UnityContainer>
+    <NLog>..\..\..\..\NLog\src\Unity.NLog.csproj</NLog>
   </PropertyGroup>
 
-  <ItemGroup Condition="Exists('$(UnityAbstractions)')">
-    <ProjectReference Include="$(UnityAbstractions)" />
+
+  <ItemGroup Condition="Exists('$(NLog)')">
+    <ProjectReference Include="$(NLog)" />
   </ItemGroup>
 
-  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="3.*" />
-  </ItemGroup>
-
-
-  <ItemGroup Condition="Exists('$(UnityContainer)')">
-    <ProjectReference Include="$(UnityContainer)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="!Exists('$(UnityContainer)')">
-    <PackageReference Include="Unity.Container" Version="5.*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Unity.NLog" Version="1.0.1" />
+  <ItemGroup Condition="!Exists('$(NLog)')">
+    <PackageReference Include="Unity.NLog" Version="1.1.*" />
   </ItemGroup>
 
 </Project>

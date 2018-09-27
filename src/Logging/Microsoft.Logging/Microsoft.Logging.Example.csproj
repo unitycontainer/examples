@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,33 +6,23 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <UnityAbstractions>..\..\..\..\Abstractions\src\Unity.Abstractions.csproj</UnityAbstractions>
-    <UnityContainer>..\..\..\..\Container\src\Unity.Container.csproj</UnityContainer>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
+    <MicrosoftLogging>..\..\..\..\Microsoft.Logging\src\Unity.Microsoft.Logging.csproj</MicrosoftLogging>
   </PropertyGroup>
 
-  <ItemGroup Condition="Exists('$(UnityAbstractions)')">
-    <ProjectReference Include="$(UnityAbstractions)" />
+
+  <ItemGroup Condition="Exists('$(MicrosoftLogging)')">
+    <ProjectReference Include="$(MicrosoftLogging)" />
   </ItemGroup>
 
-  <ItemGroup Condition="!Exists('$(UnityAbstractions)')">
-    <PackageReference Include="Unity.Abstractions" Version="3.*" />
-  </ItemGroup>
-
-
-  <ItemGroup Condition="Exists('$(UnityContainer)')">
-    <ProjectReference Include="$(UnityContainer)" />
-  </ItemGroup>
-
-  <ItemGroup Condition="!Exists('$(UnityContainer)')">
-    <PackageReference Include="Unity.Container" Version="5.*" />
+  <ItemGroup Condition="!Exists('$(MicrosoftLogging)')">
+    <PackageReference Include="Unity.Microsoft.Logging" Version="1.1.*" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.1" />
-    <PackageReference Include="Unity.Microsoft.Logging" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
