@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Reflection;
 using Unity;
-using Unity.Build;
 using Unity.Builder;
 using Unity.ObjectBuilder.BuildPlan.DynamicMethod;
 using Unity.Policy;
+using Unity.Resolution;
 using Unity.Storage;
 
 namespace BuildPlanCreatorExample
@@ -32,7 +32,7 @@ namespace BuildPlanCreatorExample
             var typeToBuild = buildKey.Type.GetTypeInfo().GenericTypeArguments.First();
             var factoryMethod =
                 _factoryMethod.MakeGenericMethod(typeof(TBuilderContext), typeToBuild)
-                              .CreateDelegate(typeof(BuildDelegate<TBuilderContext>));
+                              .CreateDelegate(typeof(ResolveDelegate<TBuilderContext>));
             // Create policy
             var creatorPlan = new DynamicMethodBuildPlan(factoryMethod);
 
