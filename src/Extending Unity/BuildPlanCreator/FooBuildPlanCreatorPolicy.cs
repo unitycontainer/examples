@@ -46,7 +46,7 @@ namespace BuildPlanCreatorExample
             where TBuilderContext : IBuilderContext
         {
             // Resolve requested type
-            var service = (TResult)context.Container.Resolve(typeof(TResult), context.BuildKey.Name);
+            var service = (TResult)context.Resolve(typeof(TResult), context.Name);
 
             // Create Foo
             return new Foo<TResult>(service);

@@ -11,8 +11,8 @@ namespace BuildPlanExample
             where TBuilderContext : IBuilderContext
         {
             // Resolve requested type
-            var argument = context.BuildKey.Type.GetTypeInfo().GenericTypeArguments[0];
-            var service = context.Container.Resolve(argument, context.BuildKey.Name);
+            var argument = context.Type.GetTypeInfo().GenericTypeArguments[0];
+            var service = context.Resolve(argument, context.Name);
 
 
             // Create Foo
