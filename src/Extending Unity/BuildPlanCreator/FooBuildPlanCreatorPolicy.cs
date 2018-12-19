@@ -1,11 +1,8 @@
 ﻿using System.Linq;
 using System.Reflection;
-using Unity;
 using Unity.Builder;
 using Unity.ObjectBuilder.BuildPlan.DynamicMethod;
 using Unity.Policy;
-using Unity.Resolution;
-using Unity.Storage;
 
 namespace BuildPlanCreatorExample
 {
@@ -25,14 +22,13 @@ namespace BuildPlanCreatorExample
             _policies = policies;
         }
 
-        public IBuildPlanPolicy CreatePlan<TBuilderContext>(ref TBuilderContext context, INamedType buildKey)
-            where TBuilderContext : IBuilderContext
+        public IBuildPlanPolicy CreatePlan(ref BuilderContext context, INamedType buildKey)
         {
             // Make generic factory method for the type
             var typeToBuild = buildKey.Type.GetTypeInfo().GenericTypeArguments.First();
             var factoryMethod =
-                _factoryMethod.MakeGenericMethod(typeof(TBuilderContext), typeToBuild)
-                              .CreateDelegate(typeof(ResolveDelegate<TBuilderContext>));
+                _factoryMethod.MakeGenericMethod(typeToBuild)
+                              .CreateDelegate(typeof(ResolveDelegate<BuilderContext>));
             // Create policy
             var creatorPlan = new DynamicMethodBuildPlan(factoryMethod);
 
@@ -42,8 +38,7 @@ namespace BuildPlanCreatorExample
             return creatorPlan;
         }
 
-        private static object FactoryMethod<TBuilderContext, TResult>(ref TBuilderContext context)
-            where TBuilderContext : IBuilderContext
+        private static object FactoryMethod<TResult>(ref BuilderContext context)
         {
             // Resolve requested type
             var service = (TResult)context.Resolve(typeof(TResult), context.Name);
