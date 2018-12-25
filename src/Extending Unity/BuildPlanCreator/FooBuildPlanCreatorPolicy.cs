@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 using Unity.Builder;
-using Unity.ObjectBuilder.BuildPlan.DynamicMethod;
 using Unity.Policy;
 
 namespace BuildPlanCreatorExample
 {
-    public class FooBuildPlanCreatorPolicy : IBuildPlanCreatorPolicy
+    public class FooBuildPlanCreatorPolicy 
     {
         private readonly IPolicyList _policies;
 
@@ -23,20 +21,18 @@ namespace BuildPlanCreatorExample
             _policies = policies;
         }
 
-        public IBuildPlanPolicy CreatePlan(ref BuilderContext context, Type type, string name)
+        public ResolveDelegate<BuilderContext> GetResolver(ref BuilderContext context)
         {
             // Make generic factory method for the type
-            var typeToBuild = type.GetTypeInfo().GenericTypeArguments.First();
-            var factoryMethod =
+            var typeToBuild = context.Type.GetTypeInfo().GenericTypeArguments.First();
+            var factoryMethod = (ResolveDelegate<BuilderContext>)
                 _factoryMethod.MakeGenericMethod(typeToBuild)
                               .CreateDelegate(typeof(ResolveDelegate<BuilderContext>));
-            // Create policy
-            var creatorPlan = new DynamicMethodBuildPlan(factoryMethod);
 
             // Register BuildPlan policy with the container to optimize performance
-            _policies.Set(type, string.Empty, typeof(IBuildPlanPolicy), creatorPlan);
+            _policies.Set(context.Type, string.Empty, typeof(ResolveDelegate<BuilderContext>), factoryMethod);
 
-            return creatorPlan;
+            return factoryMethod;
         }
 
         private static object FactoryMethod<TResult>(ref BuilderContext context)
