@@ -12,8 +12,8 @@ namespace BuildPlanExample
             // Note name of the registration! It tells Unity that this policy 
             // applies to ALL resolutions of the type regardless of requested name.
             // In other words it creates 'Built-In' registration similar to Lazy or IEnumerable.
-            Context.Policies.Set(typeof(IFoo<>), string.Empty, typeof(IBuildPlanPolicy), new FooBuildPlanPolicy());
-            Context.Policies.Set(typeof(Foo<>), string.Empty, typeof(IBuildPlanPolicy), new FooBuildPlanPolicy()); // Optional
+            Context.Policies.Set(typeof(IFoo<>), string.Empty, typeof(ResolveDelegateFactory), (ResolveDelegateFactory)FooBuildPlanPolicy.GetResolver);
+            Context.Policies.Set(typeof(Foo<>), string.Empty, typeof(ResolveDelegateFactory), (ResolveDelegateFactory)FooBuildPlanPolicy.GetResolver); // Optional
         }
     }
 }

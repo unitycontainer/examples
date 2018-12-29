@@ -5,21 +5,18 @@ using Unity.Policy;
 
 namespace BuildPlanExample
 {
-    public class FooBuildPlanPolicy : IBuildPlanPolicy
+    public static class FooBuildPlanPolicy
     {
-        public void BuildUp(ref BuilderContext context)
+
+        public static ResolveDelegate<BuilderContext> GetResolver(ref BuilderContext context)
         {
             // Resolve requested type
             var argument = context.Type.GetTypeInfo().GenericTypeArguments[0];
-            var service = context.Resolve(argument, context.Name);
-
+            var name = context.Name;
+            var typeToBuild = typeof(Foo<>).GetTypeInfo().MakeGenericType(argument);
 
             // Create Foo
-            var typeToBuild = typeof(Foo<>).GetTypeInfo().MakeGenericType(argument);
-            context.Existing = Activator.CreateInstance(typeToBuild, service);
-
-            // Note: This example does not optimize implementation in any way for
-            // simplicity.
+            return (ref BuilderContext c) => Activator.CreateInstance(typeToBuild, c.Resolve(argument, name));
         }
     }
 }
