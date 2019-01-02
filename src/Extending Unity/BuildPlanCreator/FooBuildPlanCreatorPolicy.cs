@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using Unity;
 using Unity.Builder;
 using Unity.Policy;
 
@@ -30,7 +31,7 @@ namespace BuildPlanCreatorExample
                               .CreateDelegate(typeof(ResolveDelegate<BuilderContext>));
 
             // Register BuildPlan policy with the container to optimize performance
-            _policies.Set(context.Type, string.Empty, typeof(ResolveDelegate<BuilderContext>), factoryMethod);
+            _policies.Set(context.Type, UnityContainer.All, typeof(ResolveDelegate<BuilderContext>), factoryMethod);
 
             return factoryMethod;
         }
