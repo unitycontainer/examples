@@ -3,6 +3,7 @@ using System.Reflection;
 using Unity;
 using Unity.Builder;
 using Unity.Policy;
+using Unity.Resolution;
 
 namespace BuildPlanCreatorExample
 {
