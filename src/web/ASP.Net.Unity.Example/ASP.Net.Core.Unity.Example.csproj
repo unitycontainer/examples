@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <DependencyInjection>$(SolutionDir)Microsoft.DependencyInjection\src\Unity.Microsoft.DependencyInjection.csproj</DependencyInjection>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(DependencyInjection)')">
+    <ProjectReference Include="$(DependencyInjection)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('$(DependencyInjection)')">
+    <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.9.*" />
+  </ItemGroup>
+
+
+</Project>
