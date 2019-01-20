@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ASP.Net.Unity.Example.Models;
 using Microsoft.AspNetCore.Mvc;
-using ASP.Net.Unity.Example.Models;
+using System.Diagnostics;
+using Unity;
 
 namespace ASP.Net.Unity.Example.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController(IUnityContainer container)
+        {
+            // Verify controller was created by Unity container
+            Debug.Assert(null != container);
+        }
+
         public IActionResult Index()
         {
             return View();
