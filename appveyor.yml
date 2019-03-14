@@ -3,7 +3,7 @@ configuration: Release
 platform: Any CPU
 
 before_build:
-- cmd: dotnet restore
+- nuget restore
 
 build:
   project: examples.sln
