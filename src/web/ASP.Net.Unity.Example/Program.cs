@@ -11,14 +11,8 @@ namespace ASP.Net.Unity.Example
 
         public static void Main(string[] args)
         {
-            // Manully create Unity container
-#if DEBUG
-            _container = new UnityContainer()
-                // Optionally you could enable diagnostic extension
-                .AddExtension(new Diagnostic());
-#else
+            // Manually create Unity container
             _container = new UnityContainer();
-#endif
 
             CreateWebHostBuilder(args).Build().Run();
         }
