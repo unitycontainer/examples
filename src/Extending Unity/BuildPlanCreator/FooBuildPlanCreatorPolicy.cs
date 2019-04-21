@@ -32,7 +32,7 @@ namespace BuildPlanCreatorExample
                               .CreateDelegate(typeof(ResolveDelegate<BuilderContext>));
 
             // Register BuildPlan policy with the container to optimize performance
-            _policies.Set(context.Type, UnityContainer.All, typeof(ResolveDelegate<BuilderContext>), factoryMethod);
+            _policies.Set(context.Type, typeof(ResolveDelegate<BuilderContext>), factoryMethod);
 
             return factoryMethod;
         }
