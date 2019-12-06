@@ -7,19 +7,17 @@ namespace ASP.Net.Unity.Example
 {
     public class Program
     {
-        private static IUnityContainer _container;
+        // Manually create Unity container
+        private static IUnityContainer _container = new UnityContainer();
 
         public static void Main(string[] args)
         {
-            // Manually create Unity container
-            _container = new UnityContainer();
-
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUnityServiceProvider(_container) // Instruct WebHost to use Unity as default DI
-                .UseStartup<Startup>();
+                   .UseUnityServiceProvider(_container) // Instruct WebHost to use Unity as default DI
+                   .UseStartup<Startup>();
     }
 }
