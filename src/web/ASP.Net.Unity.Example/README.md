@@ -1,4 +1,3 @@
-  
 # Example 
 This example demonstrates how Unity Container could be used with ASP.NET web applications. 
 In order to enable Unity as default dependency injection provider you need to follow two simple steps:
