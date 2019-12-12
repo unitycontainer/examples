@@ -29,8 +29,6 @@ Unity allows several scenarios how it could be used:
 
 ### Startup
 
-Class `Startup` is now resolved from Unity container so if you registered any types it would be available during construction.
-
 - If you want you could add method to your `Startup` class
 ```C#
 public void ConfigureContainer(IUnityContainer container)
