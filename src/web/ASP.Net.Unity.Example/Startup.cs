@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Unity;
 
 namespace ASP.Net.Unity.Example
 {
@@ -19,6 +20,11 @@ namespace ASP.Net.Unity.Example
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+        }
+
+        public void ConfigureContainer(IUnityContainer container)
+        {
+            // Could be used to register more types
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
