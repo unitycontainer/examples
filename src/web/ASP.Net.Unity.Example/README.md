@@ -14,7 +14,7 @@ Install-Package Unity.Microsoft.DependencyInjection
 ```C#
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .UseUnityServiceProvider(...)    <------ Add this line, you could pass IUnityContainer instrance
+        .UseUnityServiceProvider(...)    <------ Add this line, you could pass IUnityContainer instance
         .ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder.UseStartup<Startup>();
