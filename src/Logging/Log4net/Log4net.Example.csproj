@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!Exists('$(log4net)')">
-    <PackageReference Include="Unity.log4net" Version="1.1.*" />
+    <PackageReference Include="Unity.log4net" Version="6.0.*" />
   </ItemGroup>
 
 </Project>

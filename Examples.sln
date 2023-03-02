@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3ADFD211-D8C5-4166-B0E6-97838E9B6825}"
 EndProject
@@ -10,10 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPlanExample", "src\Extending Unity\BuildPlan\BuildPlanExample.csproj", "{ADBB516A-ED92-4B9D-88EC-1831BF2CECF6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildPlanCreatorExample", "src\Extending Unity\BuildPlanCreator\BuildPlanCreatorExample.csproj", "{DA4217CB-A748-48B2-9D09-9245830EB750}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.Service.Unity.Example", "src\Wcf\Wcf.Service.Unity.Example\Wcf.Service.Unity.Example.csproj", "{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wcf", "Wcf", "{1C2104BE-C931-43AC-A444-CC76AF3354E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.Net.Core.Unity.Example", "src\web\ASP.Net.Unity.Example\ASP.Net.Core.Unity.Example.csproj", "{DE7369B4-F671-4C69-925A-9266C517916E}"
 EndProject
@@ -31,10 +27,6 @@ Global
 		{DA4217CB-A748-48B2-9D09-9245830EB750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA4217CB-A748-48B2-9D09-9245830EB750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA4217CB-A748-48B2-9D09-9245830EB750}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE7369B4-F671-4C69-925A-9266C517916E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE7369B4-F671-4C69-925A-9266C517916E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE7369B4-F671-4C69-925A-9266C517916E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,7 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{ADBB516A-ED92-4B9D-88EC-1831BF2CECF6} = {973FA6B7-E0B3-489F-9D76-404F35969ACD}
 		{DA4217CB-A748-48B2-9D09-9245830EB750} = {973FA6B7-E0B3-489F-9D76-404F35969ACD}
-		{A4A256A5-AD8F-4D6F-8720-D9798D0AAA66} = {1C2104BE-C931-43AC-A444-CC76AF3354E6}
 		{DE7369B4-F671-4C69-925A-9266C517916E} = {3ADFD211-D8C5-4166-B0E6-97838E9B6825}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

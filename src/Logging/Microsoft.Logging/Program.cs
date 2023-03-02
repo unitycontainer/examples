@@ -11,12 +11,13 @@ namespace Microsoft.Logging.Example
         static void Main(string[] args)
         {
             // Create and configure LoggerFactory
-            ILoggerFactory loggerFactory = new LoggerFactory();
-            loggerFactory.AddProvider(
-                new ConsoleLoggerProvider((text, logLevel) => logLevel >= LogLevel.Debug, false));
+            var monitor = new TestOptionsMonitor(new ConsoleLoggerOptions() { FormatterName = "NonExistentFormatter" });
+            var loggerProvider = new ConsoleLoggerProvider(monitor);
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(loggerProvider);
 
             // Create local logger
-            ILogger logger = loggerFactory.CreateLogger<Program>();
+            var logger = loggerFactory.CreateLogger<Program>();
 
             // Get the container
             var container = new UnityContainer();
